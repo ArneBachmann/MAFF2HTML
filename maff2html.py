@@ -116,8 +116,6 @@ def convertMaffToHtml(sourcefile, targetfile):
   with ((lzma.LZMAFile(targetfile, 'wb', format = lzma.FORMAT_XZ, check = lzma.CHECK_CRC32, preset = 9) if '--lzma' in sys.argv else bz2.BZ2File(targetfile, 'w')) if '--compress' in sys.argv else open(targetfile, 'wb')) as fd:
     fd.write(FRAME.replace(b"{charset}", charset).replace(b"{title}", title).replace(b"{frame}", base64.b64encode(main)).replace(b"{meta}", base64.b64encode(META_FRAME.replace(b"{charset}", charset).replace(b"{url}", original).replace(b"{title}", title).replace(b"{datetime}", datetime))))
   shutil.rmtree(tmp)
-  try: os.unlink(sourcefile.replace(".maff", ".html"))
-  except: pass
 
 
 if __name__ == '__main__':
