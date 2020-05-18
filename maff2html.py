@@ -123,4 +123,5 @@ if __name__ == '__main__':
     print("python[3] maff2html.py [--compress [--lzma]]")
   for dirname, dirpaths, filepaths in os.walk(os.path.abspath(os.getcwd())):
     for filename in (f for f in filepaths if f.endswith(".maff")):
-      convertMaffToHtml(os.path.join(dirname, filename), os.path.join(dirname, filename.replace(".maff", ((".html.xz" if "--lzma" in sys.argv else ".html.bz2") if '--compress' in sys.argv else '.maff.html'))))
+      target = os.path.join(dirname, filename.replace(".maff", ((".html.xz" if "--lzma" in sys.argv else ".html.bz2") if '--compress' in sys.argv else '.maff.html')))
+      if not os.path.exists(target): convertMaffToHtml(os.path.join(dirname, filename), target)
