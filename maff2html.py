@@ -1,7 +1,7 @@
-''' MAFF2HTML converter  (C) 2020  Arne Bachmann  https://github.com/ArneBachmann/maff2html '''
+''' MAFF2HTML converter  (C) 2020-2021  Arne Bachmann  https://github.com/ArneBachmann/maff2html '''
 
 # HINT Optional libraries: pip[3] install filetype python-magic
-# TODO instead of unzipping into temporary folders (very bad on Windows)=, unzip in memory instead
+# TODO instead of unzipping into temporary folders (very bad on Windows), unzip in memory instead
 
 import base64, bz2, imghdr, lzma, mimetypes, os, pathlib, re, shutil, sys, tempfile, urllib.parse, zipfile
 try: import filetype
@@ -37,7 +37,7 @@ IMGHDR = {
 }
 
 # Main frameset
-FRAME = b'''<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+FRAME = rb'''<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
 "http://www.w3.org/TR/html4/frameset.dtd">
 <html>
   <head>
@@ -54,7 +54,7 @@ FRAME = b'''<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
 '''
 
 # Metadata frame
-META_FRAME = b'''<!DOCTYPE html>
+META_FRAME = rb'''<!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="Content-type" content="text/html;charset="{charset}">
@@ -70,8 +70,8 @@ META_FRAME = b'''<!DOCTYPE html>
 
 
 def convertMaffToHtml(sourcefile, targetfile):
-  ''' Operating in bytes. '''
-  print("Converting " + sourcefile)
+  ''' Operating on bytes. '''
+  print("Converting '%s'" % sourcefile)
   tmp = tempfile.mkdtemp()
   try:
     with zipfile.ZipFile(sourcefile, 'r') as z: z.extractall(tmp)
@@ -108,7 +108,7 @@ def convertMaffToHtml(sourcefile, targetfile):
           except:
             try: mime = magic.from_file(file, mime = True)
             except: pass
-    if mime is None: mime = b"application/octet-stream"; print("  Could not determine file type: " + ref.decode(charset.decode("ascii")))  #; sys.exit(1)
+    if mime is None: mime = b"application/octet-stream"; print("  Could not determine file type: '%s'" % ref.decode(charset.decode("ascii")))  #; sys.exit(1)
     else: mime = mime.encode(charset.decode("ascii"))
     replacements[ref] = b"data:%s;base64, %s" % (mime, base64.b64encode(data))
   for ref, replacement in replacements.items():  # second pass: perform replacements
