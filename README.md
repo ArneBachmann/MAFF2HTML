@@ -13,6 +13,9 @@ Anyway I think this is a uniquely useful long-term solution for keeping your dat
 
 Enjoy!
 
+Changes made by Pepe Pardo:
+It does not use temporary directory, Everything is done in memory.
+Fix the files with & amp; in the name replacing it with &.
 
 ## Usage
 The basic usage is:
