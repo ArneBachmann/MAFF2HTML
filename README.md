@@ -15,6 +15,7 @@ Enjoy!
 
 
 ## Usage
+
 The basic usage is:
 
 ```bash
@@ -28,3 +29,15 @@ This will find all `*.maff` files in the current and all sub-folders and convert
 | *none*               | *none*      | `.maff.html`   |
 | `--compress`         | BZIP2       | `.html.bz2`    |
 | `--compress --lzma`  | LZMA        | `.html.xz`     |
+
+
+## Contributors
+
+- Pepe Pardo (pppardo): in-memory unzipping, encoding fix
+
+
+## TODO
+
+- add pyproject.toml with console_script and dependencies
+- optional libraries: filetype, python-magic
+- use `pathlib` instead of `os.path`
