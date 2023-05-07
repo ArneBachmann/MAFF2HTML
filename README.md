@@ -19,7 +19,7 @@ Enjoy!
 The basic usage is:
 
 ```bash
-python[3] maff2html.py [--compress [--lzma]]
+python[3] maff2html.py [--compress [--lzma]] [--keep-timestamp]
 ```
 
 This will find all `*.maff` files in the current and all sub-folders and convert them into `*.html.xz`, `*.html.bz2` or `*.maff.html` files, leaving the original `*.maff` file untouched.
