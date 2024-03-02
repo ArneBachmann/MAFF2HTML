@@ -1,4 +1,4 @@
-''' MAFF2HTML converter  (C) 2020-2023  Arne Bachmann  https://github.com/ArneBachmann/maff2html '''
+''' MAFF2HTML converter  (C) 2020-2024  Arne Bachmann  https://github.com/ArneBachmann/maff2html '''
 
 import base64, bz2, contextlib, html, imghdr, lzma, mimetypes, os, pathlib, re, shutil, sys, tempfile, urllib.parse, zipfile
 from typing import cast, Dict, Final, Optional

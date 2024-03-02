@@ -5,7 +5,7 @@ This tool converts your MAFF archived websites to single base64-encoded HTML fil
 The HTML frames referenced by the MAFF's frameset and all their nested referenced resources like images, stylesheets, fonts and scripts are inlined using base64-encoded `data:` URLs (!).
 
 This unique approach lets you keep all information of the MAFF in a *single* HTML file.
-I don't think, this solution exists anywhere else.
+I don't think this solution exists anywhere else.
 
 Sadly, however, even modern (year 2020) browsers struggle loading larger HTML documents with frames and inline data, and may fail to render base64-encoded contents efficiently, or crash with *out of memory* errors.
 
@@ -38,6 +38,6 @@ This will find all `*.maff` files in the current and all sub-folders and convert
 
 ## TODO
 
-- add pyproject.toml with console_script and dependencies
+- add `pyproject.toml` with console_script and dependencies
 - optional libraries: filetype, python-magic
 - use `pathlib` instead of `os.path`
